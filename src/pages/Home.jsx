@@ -2,22 +2,35 @@ import {useState, useEffect} from 'react'
 
 export default function Home(){
     const [post,setPost]= useState([]) 
-
-    const fetching= async ()=> {
+    
+    const fetching= async function(){
         try{
-            const res = await fetch("http://localhost:5000/blog")
-            const blogs= res.json 
-            setPost(blogs)
-            console.log(blogs)
-        }
-        catch(e){
+            const response= await fetch('http://localhost:5000/blog')
+            const data = await response.json()
+            setPost(data.blogs)
+        }catch(e){
             console.log(e)
         }
     }
 
+    useEffect(()=>{  
+        fetching()
+    }, [])
 
     return(
-        <button onClick={fetching}>YO</button>
+        <>
+            <button onClick={fetching}>YO</button>
+            <button onClick={() => {console.log(post)}}>check</button>
+            {post.map((item, index) => {
+                return(
+                    <div key={index}>
+                        <h1>{item.title}</h1>
+                        <p>{item.body}</p>
+                    </div>
+                )
+            })}
+
+        </>
     )
     
 }
