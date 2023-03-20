@@ -1,13 +1,11 @@
 import Home from './pages/Home';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
-import { BrowserRouter, Route, Routes,Link } from 'react-router-dom';
+import { Route, Routes,Link } from 'react-router-dom';
 
 function App() {
-
   return (
-    <>
-    
+    <>  
     <nav>
       <ul>
         <li>
@@ -19,9 +17,9 @@ function App() {
     </nav>
   
     <Routes>
-      <Route path="/" element={<Home/> }></Route>
-      <Route path="/signup" element={<Signup/>} ></Route>
-      <Route path="/login" element={<Login/>} ></Route>
+      <Route path="/" element={<Home/> }/>
+      <Route path="/signup" element={<Signup/>}/>
+      <Route path="/login" element={<Login/>}/>
     </Routes>
     </>
   );

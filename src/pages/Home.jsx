@@ -19,8 +19,6 @@ export default function Home(){
 
     return(
         <>
-            <button onClick={fetching}>YO</button>
-            <button onClick={() => {console.log(post)}}>check</button>
             {post.map((item, index) => {
                 return(
                     <div key={index}>
