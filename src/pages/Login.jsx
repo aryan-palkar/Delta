@@ -6,6 +6,8 @@ const Login = () => {
     password: "",
   });
 
+  const [output, setOutput] = useState("")
+
   const changeHandler = (e) => {
     setInfo({ ...info, [e.target.name]: e.target.value });
   };
@@ -26,15 +28,16 @@ const Login = () => {
 
     const data = await response.json();
     if (data.accessToken) {
-      localStorage.setItem("token", data.token);
+      localStorage.setItem("accessToken", data.accessToken);
        // redirect to dashboard or protected route
-       console.log('success');
+      setOutput("Login Successful")
     } else {
-      console.log(data.message);
+      setOutput(data.message);
     }
   };
 
   return (
+    <>
     <form onSubmit={handleSubmit}>
         <label>Username:</label>
         <input type="text" name="username" value={info.username} onChange={changeHandler} />
@@ -44,6 +47,12 @@ const Login = () => {
         <br/>
         <button type="submit">Login</button>
     </form>
+
+    <div>
+    {output && <p>{output}</p>}
+    {output && <button onClick={() => setOutput("")}>X</button>}
+    </div>
+    </>
   );
 };
 
