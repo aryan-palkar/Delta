@@ -1,0 +1,10 @@
+.nav{
+    background-color: aqua;
+    display: flex;
+    justify-content: space-around;
+}
+
+.logo{
+    margin: 10px;
+    background-color: bisque;
+}
